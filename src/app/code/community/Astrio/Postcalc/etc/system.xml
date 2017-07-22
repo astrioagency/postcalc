@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Astrio Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0).
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you are unable to obtain it through the world-wide-web, please send
+ * an email to info@astrio.net so we can send you a copy immediately.
+ *
+ * @category  Astrio
+ * @package   Astrio_Postcalc
+ * @copyright Copyright (c) 2010-2017 Astrio Co. (http://astrio.net)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author    Vladimir Khalzov <v.khalzov@astrio.net>
+ */
+-->
+<config>
+    <sections>
+        <carriers>
+            <groups>
+                <astriopostcalc translate="label" module="astrio_postcalc">
+                    <label>Postcalc</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <!-- General config -->
+                        <active translate="label">
+                            <label>Enabled for Checkout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <test_mode translate="label">
+                            <label>Enable test mode</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>130</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </test_mode>
+                        <!-- Postcalc configuration -->
+                        <admin_email translate="label comment">
+                            <label>Administrator email</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-email</validate>
+                            <backend_model>adminhtml/system_config_backend_email_address</backend_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Address of the system administrator or a person who is responsible for API integration, required for live mode]]></comment>
+                        </admin_email>
+                        <post_office_zipcode translate="label comment">
+                            <label>Post office zip code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Post office zip code which handles departure]]></comment>
+                        </post_office_zipcode>
+                        <unit_of_mass translate="label">
+                            <label>Weight unit</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>astrio_postcalc/shipping_carrier_postcalc_source_unitofmass</source_model>
+                            <sort_order>225</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </unit_of_mass>
+                        <include_vat translate="label">
+                            <label>Include VAT</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </include_vat>
+                        <insurance_type translate="label comment">
+                            <label>Insurance type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>astrio_postcalc/shipping_carrier_postcalc_source_insurance</source_model>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Full - potential losses are insured, optimal for Cash On Delivery<br />Partial - only goods are insured, the usual practice of the Russian Post]]></comment>
+                        </insurance_type>
+                        <declared_value_percentage translate="label comment">
+                            <label>The percentage of the declared value</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                        </declared_value_percentage>
+                        <include_processing_fee translate="label">
+                            <label>Include processing fee</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>astrio_postcalc/shipping_carrier_postcalc_source_fee</source_model>
+                            <sort_order>260</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </include_processing_fee>
+                        <processing_fee_amount translate="label comment tooltip">
+                            <label>Processing fee amount</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>265</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <include_processing_fee separator=",">f,p</include_processing_fee>
+                            </depends>
+                            <comment><![CDATA[Amount will have influence on the insurance cost during shipping rates calculation process]]></comment>
+                            <tooltip><![CDATA[Fixed amount must be in the website currency]]></tooltip>
+                        </processing_fee_amount>
+                        <include_packing_fee translate="label">
+                            <label>Include packing fee</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>astrio_postcalc/shipping_carrier_postcalc_source_fee</source_model>
+                            <sort_order>270</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </include_packing_fee>
+                        <packing_fee_amount translate="label comment tooltip">
+                            <label>Packing fee amount</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>275</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <include_packing_fee separator=",">f,p</include_packing_fee>
+                            </depends>
+                            <comment><![CDATA[Amount will have influence on the insurance cost during shipping rates calculation process]]></comment>
+                            <tooltip><![CDATA[Fixed amount must be in the website currency]]></tooltip>
+                        </packing_fee_amount>
+                        <!-- Internal handling fee and shipment date offset -->
+                        <handling_type translate="label">
+                            <label>Calculate Handling Fee</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>shipping/source_handlingType</source_model>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Applies after shipping rates calculation]]></comment>
+                        </handling_type>
+                        <handling_action translate="label">
+                            <label>Handling Applied</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>shipping/source_handlingAction</source_model>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </handling_action>
+                        <handling_fee translate="label tooltip">
+                            <label>Handling Fee</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>330</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[Fixed amount must be in the website currency]]></tooltip>
+                        </handling_fee>
+                        <shipment_date_offset translate="label comment">
+                            <label>Offset of the shipment date</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>340</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[In days, shipping cost will be calculated on the specified day]]></comment>
+                        </shipment_date_offset>
+                        <display_delivery_time translate="label">
+                            <label>Display estimated delivery time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>350</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_delivery_time>
+                        <delivery_time_offset translate="label comment">
+                            <label>Estimated delivery time offset</label>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>355</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[In days, value will be added to the estimated delivery time returned by the shipping carrier]]></comment>
+                            <depends>
+                                <display_delivery_time separator=",">1</display_delivery_time>
+                            </depends>
+                        </delivery_time_offset>
+                        <!-- Carrier specific settings (including free shipping method) -->
+                        <allowed_methods translate="label">
+                            <label>Allowed Methods</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>astrio_postcalc/shipping_carrier_postcalc_source_method</source_model>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </allowed_methods>
+                        <free_shipping_enable translate="label">
+                            <label>Free Shipping with Minimum Order Amount</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>420</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </free_shipping_enable>
+                        <free_method translate="label">
+                            <label>Free Method</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_class>free-method</frontend_class>
+                            <source_model>astrio_postcalc/shipping_carrier_postcalc_source_freemethod</source_model>
+                            <sort_order>430</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <free_shipping_enable separator=",">1</free_shipping_enable>
+                            </depends>
+                        </free_method>
+                        <free_shipping_subtotal translate="label">
+                            <label>Minimum Order Amount for Free Shipping</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>440</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <free_shipping_enable separator=",">1</free_shipping_enable>
+                            </depends>
+                        </free_shipping_subtotal>
+                        <!-- Common settings -->
+                        <specificerrmsg translate="label" module="astrio_postcalc">
+                            <label>Displayed Error Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>510</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificerrmsg>
+                        <sallowspecific translate="label" module="astrio_postcalc">
+                            <label>Ship to Applicable Countries</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>520</sort_order>
+                            <frontend_class>shipping-applicable-country</frontend_class>
+                            <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sallowspecific>
+                        <specificcountry translate="label" module="astrio_postcalc">
+                            <label>Ship to Specific Countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>530</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <sallowspecific separator=",">1</sallowspecific>
+                            </depends>
+                        </specificcountry>
+                        <debug translate="label" module="astrio_postcalc">
+                            <label>Debug</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>540</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </debug>
+                        <showmethod translate="label" module="astrio_postcalc">
+                            <label>Show Method if Not Applicable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>550</sort_order>
+                            <frontend_class>shipping-skip-hide</frontend_class>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </showmethod>
+                        <sort_order translate="label" module="astrio_postcalc">
+                            <label>Sort Order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>560</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sort_order>
+                    </fields>
+                </astriopostcalc>
+            </groups>
+        </carriers>
+    </sections>
+</config>

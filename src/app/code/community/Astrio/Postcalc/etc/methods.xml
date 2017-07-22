@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Astrio Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0).
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you are unable to obtain it through the world-wide-web, please send
+ * an email to info@astrio.net so we can send you a copy immediately.
+ *
+ * @category  Astrio
+ * @package   Astrio_Postcalc
+ * @copyright Copyright (c) 2010-2017 Astrio Co. (http://astrio.net)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author    Vladimir Khalzov <v.khalzov@astrio.net>
+ */
+-->
+<methods>
+    <!-- National methods (max_weight in grams) -->
+    <rletter>
+        <title>Regular Letter</title>
+        <code>ПростоеПисьмо</code>
+        <max_weight>100</max_weight>
+    </rletter>
+    <rletter1c>
+        <title>Regular Letter First-Class</title>
+        <code>ПростоеПисьмо1Класс</code>
+        <max_weight>500</max_weight>
+    </rletter1c>
+    <regletter>
+        <title>Registered Letter</title>
+        <code>ЗаказноеПисьмо</code>
+        <max_weight>100</max_weight>
+    </regletter>
+    <regletter1c>
+        <title>Registered Letter First-Class</title>
+        <code>ЗаказноеПисьмо1Класс</code>
+        <max_weight>500</max_weight>
+    </regletter1c>
+    <dvletter>
+        <title>Declared Value Letter</title>
+        <code>ЦенноеПисьмо</code>
+        <max_weight>100</max_weight>
+    </dvletter>
+    <dvletter1c>
+        <title>Declared Value Letter First-Class</title>
+        <code>ЦенноеПисьмо1Класс</code>
+        <max_weight>500</max_weight>
+    </dvletter1c>
+    <ripo>
+        <title>Regular IPO</title>
+        <code>ПростойМультиконверт</code>
+        <max_weight>150</max_weight>
+    </ripo>
+    <regipo>
+        <title>Registered IPO</title>
+        <code>ЗаказнойМультиконверт</code>
+        <max_weight>150</max_weight>
+    </regipo>
+    <rwrapper>
+        <title>Regular Wrapper</title>
+        <code>ПростаяБандероль</code>
+        <max_weight>2000</max_weight>
+    </rwrapper>
+    <regwrapper>
+        <title>Registered Wrapper</title>
+        <code>ЗаказнаяБандероль</code>
+        <max_weight>2000</max_weight>
+    </regwrapper>
+    <regwrapper1c>
+        <title>Registered Wrapper First-Class</title>
+        <code>ЗаказнаяБандероль1Класс</code>
+        <max_weight>2500</max_weight>
+    </regwrapper1c>
+    <dvwrapper>
+        <title>Declared Value Wrapper</title>
+        <code>ЦеннаяБандероль</code>
+        <max_weight>2000</max_weight>
+    </dvwrapper>
+    <dvwrapper1c>
+        <title>Declared Value Wrapper First-Class</title>
+        <code>ЦеннаяБандероль1Класс</code>
+        <max_weight>2500</max_weight>
+    </dvwrapper1c>
+    <dvwrapperair>
+        <title>Declared Value Wrapper Air</title>
+        <code>ЦеннаяАвиаБандероль</code>
+        <max_weight>2000</max_weight>
+    </dvwrapperair>
+    <dvparcel>
+        <title>Declared Value Parcel</title>
+        <code>ЦеннаяПосылка</code>
+        <max_weight>20000</max_weight>
+    </dvparcel>
+    <dvparcelair>
+        <title>Declared Value Parcel Air</title>
+        <code>ЦеннаяАвиаПосылка</code>
+        <max_weight>20000</max_weight>
+    </dvparcelair>
+    <ems>
+        <title>EMS Courier Delivery</title>
+        <code>EMS</code>
+        <max_weight>31500</max_weight>
+    </ems>
+    <courieronline>
+        <title>Courier Online</title>
+        <code>КурьерОнлайн</code>
+        <max_weight>5000</max_weight>
+    </courieronline>
+    <parcelonline>
+        <title>Parcel Online</title>
+        <code>ПосылкаОнлайн</code>
+        <max_weight>5000</max_weight>
+    </parcelonline>
+    <!-- International methods (max_weight in grams) -->
+    <intmbag>
+        <title>International M Bag</title>
+        <code>МждМешокМ</code>
+        <max_weight>14500</max_weight>
+    </intmbag>
+    <intmbagair>
+        <title>International M Bag Air</title>
+        <code>МждМешокМАвиа</code>
+        <max_weight>14500</max_weight>
+    </intmbagair>
+    <intregmbag>
+        <title>International Registered M Bag</title>
+        <code>МждМешокМЗаказной</code>
+        <max_weight>14500</max_weight>
+    </intregmbag>
+    <intregmbagair>
+        <title>International Registered M Bag Air</title>
+        <code>МждМешокМАвиаЗаказной</code>
+        <max_weight>14500</max_weight>
+    </intregmbagair>
+    <intwrapper>
+        <title>International Wrapper</title>
+        <code>МждБандероль</code>
+        <max_weight>5000</max_weight>
+    </intwrapper>
+    <intwrapperair>
+        <title>International Wrapper Air</title>
+        <code>МждБандерольАвиа</code>
+        <max_weight>5000</max_weight>
+    </intwrapperair>
+    <intregwrapper>
+        <title>International Registered Wrapper</title>
+        <code>МждБандерольЗаказная</code>
+        <max_weight>5000</max_weight>
+    </intregwrapper>
+    <intregwrapperair>
+        <title>International Registered Wrapper Air</title>
+        <code>МждБандерольАвиаЗаказная</code>
+        <max_weight>5000</max_weight>
+    </intregwrapperair>
+    <intspacket>
+        <title>International Small Packet</title>
+        <code>МждМелкийПакет</code>
+        <max_weight>2000</max_weight>
+    </intspacket>
+    <intspacketair>
+        <title>International Small Packet Air</title>
+        <code>МждМелкийПакетАвиа</code>
+        <max_weight>2000</max_weight>
+    </intspacketair>
+    <intregspacket>
+        <title>International Registered Small Packet</title>
+        <code>МждМелкийПакетЗаказной</code>
+        <max_weight>2000</max_weight>
+    </intregspacket>
+    <intregspacketair>
+        <title>International Registered Small Packet Air</title>
+        <code>МждМелкийПакетАвиаЗаказной</code>
+        <max_weight>2000</max_weight>
+    </intregspacketair>
+    <intparcel>
+        <title>International Parcel</title>
+        <code>МждПосылка</code>
+        <max_weight>20000</max_weight>
+    </intparcel>
+    <intparcelair>
+        <title>International Parcel Air</title>
+        <code>МждПосылкаАвиа</code>
+        <max_weight>20000</max_weight>
+    </intparcelair>
+    <intemsdocs>
+        <title>International EMS Documents</title>
+        <code>EMS_МждДокументы</code>
+        <max_weight>2000</max_weight>
+    </intemsdocs>
+    <intemsgoods>
+        <title>International EMS Goods</title>
+        <code>EMS_МждТовары</code>
+        <max_weight>31500</max_weight>
+    </intemsgoods>
+</methods>

@@ -1,0 +1,4 @@
+src/app/code/community/Astrio/Postcalc app/code/community/Astrio/Postcalc
+src/app/etc/modules/Astrio_Postcalc.xml app/etc/modules/Astrio_Postcalc.xml
+src/app/locale/en_US/Astrio_Postcalc.csv app/locale/en_US/Astrio_Postcalc.csv
+src/app/locale/ru_RU/Astrio_Postcalc.csv app/locale/ru_RU/Astrio_Postcalc.csv

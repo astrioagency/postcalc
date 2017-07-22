@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Astrio Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0).
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you are unable to obtain it through the world-wide-web, please send
+ * an email to info@astrio.net so we can send you a copy immediately.
+ *
+ * @category  Astrio
+ * @package   Astrio_Postcalc
+ * @copyright Copyright (c) 2010-2017 Astrio Co. (http://astrio.net)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author    Vladimir Khalzov <v.khalzov@astrio.net>
+ */
+-->
+<config>
+    <modules>
+        <Astrio_Postcalc>
+            <version>1.0.0</version>
+        </Astrio_Postcalc>
+    </modules>
+    <global>
+        <models>
+            <astrio_postcalc>
+                <class>Astrio_Postcalc_Model</class>
+            </astrio_postcalc>
+        </models>
+        <helpers>
+            <astrio_postcalc>
+                <class>Astrio_Postcalc_Helper</class>
+            </astrio_postcalc>
+        </helpers>
+        <sales>
+            <shipping>
+                <carriers>
+                    <astriopostcalc>
+                        <class>Astrio_Postcalc_Model_Shipping_Carrier_Postcalc</class>
+                    </astriopostcalc>
+                </carriers>
+            </shipping>
+        </sales>
+    </global>
+    <frontend>
+        <translate>
+            <modules>
+                <Astrio_Postcalc>
+                    <files>
+                        <default>Astrio_Postcalc.csv</default>
+                    </files>
+                </Astrio_Postcalc>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Astrio_Postcalc>
+                    <files>
+                        <default>Astrio_Postcalc.csv</default>
+                    </files>
+                </Astrio_Postcalc>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <carriers>
+            <astriopostcalc>
+                <active>0</active>
+                <model>astrio_postcalc/shipping_carrier_postcalc</model>
+                <title>Russian Post (Postcalc)</title>
+                <test_mode>1</test_mode>
+                <admin_email><![CDATA[developers@astrio.ru]]></admin_email>
+                <post_office_zipcode>101000</post_office_zipcode>
+                <unit_of_mass>kg</unit_of_mass>
+                <insurance_type>f</insurance_type>
+                <declared_value_percentage>100</declared_value_percentage>
+                <include_processing_fee>0</include_processing_fee>
+                <processing_fee_amount>0</processing_fee_amount>
+                <include_packing_fee>0</include_packing_fee>
+                <packing_fee_amount>0</packing_fee_amount>
+                <include_vat>1</include_vat>
+                <max_package_weight>100000</max_package_weight> <!-- in grams -->
+                <max_package_declared_value>100000</max_package_declared_value> <!-- in RUB -->
+                <shipment_requesttype>1</shipment_requesttype>
+                <handling_type>F</handling_type>
+                <handling_action>O</handling_action>
+                <handling_fee>0</handling_fee>
+                <shipment_date_offset>0</shipment_date_offset>
+                <display_delivery_time>0</display_delivery_time>
+                <delivery_time_offset>0</delivery_time_offset>
+                <allowed_methods>rletter,rletter1c,regletter,regletter1c,dvletter,dvletter1c,ripo,regipo,rwrapper,regwrapper,regwrapper1c,dvwrapper,dvwrapper1c,dvwrapperair,dvparcel,dvparcelair,ems,courieronline,parcelonline,intmbag,intmbagair,intregmbag,intregmbagair,intwrapper,intwrapperair,intregwrapper,intregwrapperair,intspacket,intspacketair,intregspacket,intregspacketair,intparcel,intparcelair,intemsdocs,intemsgoods</allowed_methods>
+                <free_shipping_enable>0</free_shipping_enable>
+                <free_method>dvparcel</free_method>
+                <free_shipping_subtotal>0</free_shipping_subtotal>
+                <specificerrmsg><![CDATA[This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.]]></specificerrmsg>
+                <sallowspecific>0</sallowspecific>
+                <debug>0</debug>
+                <showmethod>0</showmethod>
+                <sort_order>0</sort_order>
+            </astriopostcalc>
+        </carriers>
+    </default>
+</config>
